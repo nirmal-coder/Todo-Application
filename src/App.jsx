@@ -7,6 +7,7 @@ import { ThemeContext } from "./context/ThemeContext";
 import TodoForm from "./components/TodoForm";
 import { ToastContainer } from "react-toastify";
 import EditTodo from "./components/EditTodo";
+import Footer from "./components/Footer";
 
 const App = () => {
   const { isDark } = useContext(ThemeContext);
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/add" element={<TodoForm />} />
         <Route path="/edit" element={<EditTodo />} />
       </Routes>
+      <Footer />
     </div>
   );
 };
