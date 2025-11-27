@@ -1,4 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
+import { ThemeContext } from "./ThemeContext";
 
 export const TodoContext = createContext();
 
@@ -18,6 +20,9 @@ const TodoContextProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [tabs, setTabs] = useState("all");
+  const searchRef = useRef(null);
+  const navigate = useNavigate();
+  const { setIsDark } = useContext(ThemeContext);
 
   const handleFilter = () => {
     // Start with the full todo list
@@ -56,6 +61,35 @@ const TodoContextProvider = ({ children }) => {
     handleFilter();
   }, [todoList, search, tabs, category]);
 
+  const focusSearch = () => {
+    searchRef.current?.focus();
+  };
+
+  useEffect(() => {
+    const handleKeydown = (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === "n") {
+        e.preventDefault();
+        e.stopPropagation();
+        navigate("/add");
+      }
+
+      if (e.ctrlKey && e.key === "d") {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDark((prev) => !prev);
+      }
+
+      if (e.ctrlKey && e.key === "k") {
+        e.preventDefault();
+        focusSearch();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+
+    return () => window.removeEventListener("keydown", handleKeydown);
+  }, []);
+
   const values = {
     todoList,
     setTodoList,
@@ -67,6 +101,7 @@ const TodoContextProvider = ({ children }) => {
     setCategory,
     tabs,
     setTabs,
+    searchRef,
   };
   return (
     <TodoContext.Provider value={{ ...values }}>

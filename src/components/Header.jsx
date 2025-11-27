@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GrTasks } from "react-icons/gr";
+import { MdOutlineTaskAlt } from "react-icons/md";
 import Searchbar from "./Searchbar";
 import { ThemeContext } from "../context/ThemeContext";
 import { MdDarkMode } from "react-icons/md";
@@ -11,8 +11,8 @@ const Header = () => {
     <div
       className={`w-full max-w-[1100px] mx-auto py-4 md:py-6 text-center flex justify-between items-center bg-[var(--background-primary)] border-b border-gray-300`}
     >
-      <h1 className="flex items-center gap-x-3 font-bold text-base md:text-lg">
-        <GrTasks className="text-blue-500" />
+      <h1 className="flex items-center gap-x-3 font-bold text-lg md:text-2xl">
+        <MdOutlineTaskAlt className="text-blue-500" />
         Clarity Todo's
       </h1>
 
