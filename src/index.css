@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap");
+
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+/* Enable `.dark` class as a variant */
+
+/* Theme Tokens */
+:root {
+  /* Light Mode Tokens */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f9fa;
+  --bg-tertiary: #eef1f4;
+
+  --text-primary: #000;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
+}
+
+.dark {
+  /* Dark Mode Tokens */
+  --bg-primary: #000;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+
+  --text-primary: #fff;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active,
+a:active {
+  transform: scale(0.9);
+  transition: all;
+  transition-duration: 0.4s;
+}
+
+.inter {
+  font-family: "Inter", sans-serif;
+}
