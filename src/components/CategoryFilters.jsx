@@ -3,7 +3,11 @@ import { TodoContext } from "../context/TodoContext";
 import { todoCategories } from "../utils/uiConfig";
 
 const CategoryFilters = () => {
-  const { category, setCategory } = useContext(TodoContext);
+  const { category, setCategory, todoList } = useContext(TodoContext);
+
+  const handleClick = (id) => {
+    setCategory(id);
+  };
 
   return (
     <div className="flex justify-between">
@@ -17,7 +21,7 @@ const CategoryFilters = () => {
                     : "bg-gray-100 dark:bg-gray-600 text-[var(--text-secondary)]"
                 }
               `}
-            onClick={() => setCategory(each.id)}
+            onClick={() => handleClick(each.id)}
             key={each.id}
           >
             <p className="text-sm">{each.label}</p>

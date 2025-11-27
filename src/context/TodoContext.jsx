@@ -58,7 +58,9 @@ const TodoContextProvider = ({ children }) => {
   }, [todoList]);
 
   useEffect(() => {
-    handleFilter();
+    if (todoList.length !== 0) {
+      handleFilter();
+    }
   }, [todoList, search, tabs, category]);
 
   const focusSearch = () => {

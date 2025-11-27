@@ -17,7 +17,7 @@ const TodoItem = () => {
     useContext(TodoContext);
   const { ToggleIsCompleted, deleteTodo } = useTodo();
 
-  if (todoList.length === 0 && tabs === "all") {
+  if (todoList.length === 0) {
     return <EmptyTodoState />;
   }
   if (filteredList.length === 0 && category !== "" && search === "") {
@@ -34,7 +34,7 @@ const TodoItem = () => {
   }
 
   return (
-    <div className="">
+    <div className="pb-20">
       {filteredList.map((each) => {
         const {
           id,
